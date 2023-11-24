@@ -14,7 +14,7 @@ class NetologyTestContainersApplicationTests {
     private static GenericContainer<?> myapp1 = new GenericContainer<>("devapp")
             .withExposedPorts(8080);
 
-    private static GenericContainer<?> myapp2 = new GenericContainer<>("prodapp")
+    private static GenericContainer<?> myapp2 = new GenericContainer<>("prodappp")
             .withExposedPorts(8081);
 
     @Autowired
@@ -28,10 +28,10 @@ class NetologyTestContainersApplicationTests {
 
     @Test
     void contextLoads() {
-        ResponseEntity<String> forEntity1 = restTemplate.getForEntity("http://localhost:" + myapp1.getMappedPort(8080), String.class);
+        ResponseEntity<String> forEntity1 = restTemplate.getForEntity("http://localhost:" + myapp1.getMappedPort(8080)+ "/profile", String.class);
         System.out.println(forEntity1.getBody());
 
-        ResponseEntity<String> forEntity2 = restTemplate.getForEntity("http://localhost:" + myapp2.getMappedPort(8081), String.class);
+        ResponseEntity<String> forEntity2 = restTemplate.getForEntity("http://localhost:" + myapp2.getMappedPort(8081) + "/profile", String.class);
         System.out.println(forEntity2.getBody());
     }
 

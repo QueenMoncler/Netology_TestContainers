@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JavaConfig {
-    @Bean
+    @Bean(name = "devProfile")
     @ConditionalOnProperty(prefix = "profile", name = "dev", havingValue = "true", matchIfMissing = true)
     public SystemProfile devProfile() {
         return new DevProfile();
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "profile", name = "dev", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = "profile", name = "dev", havingValue = "false")
     public SystemProfile prodProfile() {
         return new ProductionProfile();
     }
